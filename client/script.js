@@ -82,14 +82,14 @@ const baseURL = `http://localhost:3000`
 const ohMy = () => {
     axios.get(`${baseURL}/animals`)
     .then((res) => {
-        let text = document.getElementById('animals-button');
-        text.textContent = res.data
+        let animalsText = document.getElementById('animals-button');
+        animalsText.textContent = res.data
         console.log(res.data)
     })
     .catch((err) => {
         console.log(err)
     })
-    axios.get()
+
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -109,10 +109,13 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    axios.post(`${baseURL}/repeat/'code is cool'`)
+    let repeat = document.getElementById('repeat-button')
+
+    axios.get(`${baseURL}/repeat/'code is the greatest!'`)
     .then((res) => {
-        let answer = document.getElementById('repeat-button')
-        answer.textContent = res.data
+        repeat.textContent = res.data
+        repeat.style.display = 'block'
+
     })
     .catch((err) => {
         console.log(err)
@@ -128,7 +131,6 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
     Inside the repeatMyParam function above, grab the element with the id of 'repeat-text' and set its textContent property equal to the response data.
 */
 
-// Code in the repeatMyParam function above
 
 
 
