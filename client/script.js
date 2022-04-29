@@ -91,7 +91,7 @@ const ohMy = () => {
      p.textContent = res.data[i]
      document.querySelector('body').appendChild(p)
     }
-    
+        console.log(res.data)
     })
     .catch((err) => {
         console.log(err)
@@ -116,12 +116,14 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    let repeat = document.getElementById('repeat-button')
-    let E1 = document.getElementById('repeat-text')
+    let repeatBtn = document.getElementById('repeat-button')
+    let repeat = document.getElementById('repeat-text')
     axios.get(`${baseURL}/repeat/'code is the greatest!'`)
     .then((res) => {
-        repeat.textContent = res.data
-        E1.textContent = res.data
+        
+        let p = document.createElement('p')
+        p.textContent = res.data
+        document.querySelector('body').appendChild(p)
 
     })
     .catch((err) => {
@@ -151,12 +153,13 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
 */
 
 function sendQuery() {
-    axios.get(`${baseURL}/query-test/?did this work`)
-        .then((res))
+    axios.get(`${baseURL}/query-test/?is this working?`)
+        .then(({ data }) => console.log(data))
     }
 
 
 document.getElementById('query-button').addEventListener('click', sendQuery)
+
 
 ////////////////
 //INTERMEDIATE//
