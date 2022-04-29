@@ -5,6 +5,8 @@
 
 
 
+
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -78,13 +80,18 @@ sayHelloButton.addEventListener('click', sayHello);
     
     Handle the promise that's returned with a .then, which you should pass a callback function to. Inside the callback function, console.log the response's data (in the intermediate instructions we'll come back to this function and add HTML).
 */ 
+
 const baseURL = `http://localhost:3000`
 const ohMy = () => {
     axios.get(`${baseURL}/animals`)
     .then((res) => {
-        let animalsText = document.getElementById('animals-button');
-        animalsText.textContent = res.data
-        console.log(res.data)
+        let newArr = res.data
+    for(let i = 0; i < newArr.length; i++ ){
+     let p = document.createElement('p')
+     p.textContent = res.data[i]
+     document.querySelector('body').appendChild(p)
+    }
+    
     })
     .catch((err) => {
         console.log(err)
@@ -110,11 +117,11 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     let repeat = document.getElementById('repeat-button')
-
+    let E1 = document.getElementById('repeat-text')
     axios.get(`${baseURL}/repeat/'code is the greatest!'`)
     .then((res) => {
         repeat.textContent = res.data
-        repeat.style.display = 'block'
+        E1.textContent = res.data
 
     })
     .catch((err) => {
@@ -143,9 +150,13 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
     Outside of your new function, select the button with the id "query-button" and add a click event listener that calls your function.
 */
 
-// CODE HERE
+function sendQuery() {
+    axios.get(`${baseURL}/query-test/?did this work`)
+        .then((res))
+    }
 
 
+document.getElementById('query-button').addEventListener('click', sendQuery)
 
 ////////////////
 //INTERMEDIATE//
